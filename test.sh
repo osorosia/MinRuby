@@ -14,11 +14,14 @@ function test() {
   if [ $result -eq 0 ]; then
     echo -n '.'
   else
-    echo -n "$input => $expected expected, but got"
+    echo -n "$input => $expected expected, but got "
     cat tmp.actual.txt
     exit 1
   fi
 }
 
 test 3 '1 + 2'
+test 100 '(1 + 2) / 3 * 4 * (56 / 7 + 8 + 9)'
+test 2 '8 % 3'
+test 16 '2 ** 4'
 echo OK
