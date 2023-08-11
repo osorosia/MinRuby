@@ -44,4 +44,11 @@ test \
 y = 2 + x
 p(y)'
 
+test \
+'if 0 == 0
+  p(42)
+else
+  p(43)
+end'
+
 echo OK
