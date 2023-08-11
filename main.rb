@@ -18,6 +18,18 @@ def evaluate(tree)
       left % right
     elsif tree[0] == "**"
       left ** right
+    elsif tree[0] == "=="
+      left == right
+    elsif tree[0] == "!="
+      left != right
+    elsif tree[0] == "<"
+      left < right
+    elsif tree[0] == "<="
+      left <= right
+    elsif tree[0] == ">"
+      left > right
+    elsif tree[0] == ">="
+      left >= right
     else
       p("invalid tree")
       exit(1)
