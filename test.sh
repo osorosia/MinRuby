@@ -84,4 +84,11 @@ while i <= 100
   i = i + 1
 end'
 
+test \
+'i = 10
+begin
+  p(i)
+  i = i - 1
+end while i > 0'
+
 echo OK
