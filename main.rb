@@ -1,39 +1,36 @@
 require "minruby"
 
 def evaluate(tree)
-  if tree[0] == "lit"
+  case tree[0]
+  when "lit"
     tree[1]
+  when "+"
+    evaluate(tree[1]) + evaluate(tree[2])
+  when "-"
+    evaluate(tree[1]) - evaluate(tree[2])
+  when "*"
+    evaluate(tree[1]) * evaluate(tree[2])
+  when "/"
+    evaluate(tree[1]) / evaluate(tree[2])
+  when "%"
+    evaluate(tree[1]) % evaluate(tree[2])
+  when "**"
+    evaluate(tree[1]) ** evaluate(tree[2])
+  when "=="
+    evaluate(tree[1]) == evaluate(tree[2])
+  when "!="
+    evaluate(tree[1]) != evaluate(tree[2])
+  when "<"
+    evaluate(tree[1]) < evaluate(tree[2])
+  when "<="
+    evaluate(tree[1]) <= evaluate(tree[2])
+  when ">"
+    evaluate(tree[1]) > evaluate(tree[2])
+  when ">="
+    evaluate(tree[1]) >= evaluate(tree[2])
   else
-    left = evaluate(tree[1])
-    right = evaluate(tree[2])
-    if tree[0] == "+"
-      left + right
-    elsif tree[0] == "-"
-      left - right
-    elsif tree[0] == "*"
-      left * right
-    elsif tree[0] == "/"
-      left / right
-    elsif tree[0] == "%"
-      left % right
-    elsif tree[0] == "**"
-      left ** right
-    elsif tree[0] == "=="
-      left == right
-    elsif tree[0] == "!="
-      left != right
-    elsif tree[0] == "<"
-      left < right
-    elsif tree[0] == "<="
-      left <= right
-    elsif tree[0] == ">"
-      left > right
-    elsif tree[0] == ">="
-      left >= right
-    else
-      p("invalid tree")
-      exit(1)
-    end
+    p("invalid tree")
+    exit(1)
   end
 end
 
