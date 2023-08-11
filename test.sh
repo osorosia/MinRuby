@@ -4,10 +4,10 @@ function test() {
   expected="$1"
   input="$2"
 
-  echo "$input" > tmp.input.txt
+  echo "$input" > tmp.input.rb
 
   echo "$expected" > tmp.expected.txt
-  ruby main.rb < tmp.input.txt > tmp.actual.txt
+  ruby main.rb tmp.input.rb > tmp.actual.txt
 
   diff tmp.expected.txt tmp.actual.txt > /dev/null
   result=$?
@@ -21,18 +21,18 @@ function test() {
   fi
 }
 
-test 3 '1 + 2'
-test 100 '(1 + 2) / 3 * 4 * (56 / 7 + 8 + 9)'
-test 2 '8 % 3'
-test 16 '2 ** 4'
+test 3 'p(1 + 2)'
+test 100 'p((1 + 2) / 3 * 4 * (56 / 7 + 8 + 9))'
+test 2 'p(8 % 3)'
+test 16 'p(2 ** 4)'
 
-test true '1 == 1'
-test false '1 == 2'
-test false '1 != 1'
-test true '1 != 2'
-test true '2 * 3 > 2 + 3'
-test false '2 * 3 < 2 + 3'
-test true '2 * 3 >= 2 + 3'
-test false '2 * 3 <= 2 + 3'
+test true 'p(1 == 1)'
+test false 'p(1 == 2)'
+test false 'p(1 != 1)'
+test true 'p(1 != 2)'
+test true 'p(2 * 3 > 2 + 3)'
+test false 'p(2 * 3 < 2 + 3)'
+test true 'p(2 * 3 >= 2 + 3)'
+test false 'p(2 * 3 <= 2 + 3)'
 
 echo OK

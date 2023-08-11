@@ -28,6 +28,8 @@ def evaluate(tree)
     evaluate(tree[1]) > evaluate(tree[2])
   when ">="
     evaluate(tree[1]) >= evaluate(tree[2])
+  when "func_call"
+    p(evaluate(tree[2]))
   else
     p("invalid tree")
     exit(1)
@@ -50,10 +52,9 @@ end
 
 
 def main
-  str = gets
+  str = minruby_load()
   tree = minruby_parse(str)
   answer = evaluate(tree)
-  p(answer)
 end
 
 main
