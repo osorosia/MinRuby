@@ -14,6 +14,7 @@ function test() {
   if [ $result -eq 0 ]; then
     echo -n '.'
   else
+    echo Error
     echo -n "$input => $expected expected, but got "
     cat tmp.actual.txt
     exit 1
