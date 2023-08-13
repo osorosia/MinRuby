@@ -14,7 +14,12 @@ function test() {
     echo -n '.'
   else
     echo Error
-    echo -n "$input => $expected expected, but got "
+    echo '```'
+    echo "$input"
+    echo '```'
+    echo -n 'Expected: '
+    cat tmp.expected.txt
+    echo -n '  Actual: '
     cat tmp.actual.txt
     exit 1
   fi
@@ -90,5 +95,12 @@ begin
   p(i)
   i = i - 1
 end while i > 0'
+
+test \
+'def add(a, b)
+  a + b
+end
+
+p(add(1, 2))'
 
 echo OK

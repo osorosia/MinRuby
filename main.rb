@@ -39,8 +39,17 @@ def evaluate(tree, genv, lenv)
     if mhd[0] == "builtin"
       minruby_call(mhd[1], args)
     else
-
+      params = mhd[1]
+      i = 0
+      while params[i]
+        lenv[params[i]] = args[i]
+        i = i + 1
+      end
+      evaluate(mhd[2], genv, lenv)
     end
+  when "func_def"
+    # [tag, args, body]
+    genv[tree[1]] = ["user_defined", tree[2], tree[3]]
   when "stmts"
     i = 1
     last = nil
