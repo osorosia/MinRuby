@@ -17,9 +17,9 @@ function test() {
     echo '```'
     echo "$input"
     echo '```'
-    echo -n 'Expected: '
+    echo 'Expected:'
     cat tmp.expected.txt
-    echo -n '  Actual: '
+    echo 'Actual:'
     cat tmp.actual.txt
     exit 1
   fi
@@ -102,5 +102,26 @@ test \
 end
 
 p(add(1, 2))'
+
+test \
+'def foo()
+  x = 0
+  p(x)
+end
+
+x = 1
+foo()
+p(x)'
+
+test \
+'def fibo(n)
+  if n <= 1
+    n
+  else
+    fibo(n - 1) + fibo(n - 2)
+  end
+end
+
+p(fibo(5))'
 
 echo OK
