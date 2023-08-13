@@ -137,4 +137,12 @@ p(ary[0])
 p(ary[1])
 p(ary[2])'
 
+test \
+'hsh = { 1 => 10, 2 => 20, 3 => 30 }
+hsh[0] = 42
+p(hsh[0])
+p(hsh[1])
+p(hsh[2])
+p(hsh[3])'
+
 echo OK
