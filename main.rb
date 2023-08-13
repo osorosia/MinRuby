@@ -112,12 +112,14 @@ def evaluate(tree, genv, lenv)
   end
 end
 
-def main
-  genv = {"p" => ["builtin", "p"]}
-  lenv = {}
-  str = minruby_load()
-  tree = minruby_parse(str)
-  answer = evaluate(tree, genv, lenv)
-end
-
-main
+genv = {
+  "p" => ["builtin", "p"],
+  "require" => ["builtin", "require"],
+  "minruby_parse" => ["builtin", "minruby_parse"],
+  "minruby_load" => ["builtin", "minruby_load"],
+  "minruby_call" => ["builtin", "minruby_call"],
+}
+lenv = {}
+str = minruby_load()
+tree = minruby_parse(str)
+answer = evaluate(tree, genv, lenv)
